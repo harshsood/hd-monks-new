@@ -6,7 +6,7 @@
 
 1. **Create `.env` file** in backend directory with:
 ```env
-MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://sr4ipr:<your_password>@cluster0.b5sxnrw.mongodb.net/?appName=Cluster0
 DB_NAME=hdmonks
 EMAIL_SENDER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password
@@ -31,7 +31,7 @@ ENVIRONMENT=production
 
 #### Environment Variables (Set in Render Dashboard):
 ```
-MONGO_URL=your_mongodb_connection_string
+MONGO_URL=mongodb+srv://sr4ipr:<your_password>@cluster0.b5sxnrw.mongodb.net/?appName=Cluster0
 DB_NAME=hdmonks
 EMAIL_SENDER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password

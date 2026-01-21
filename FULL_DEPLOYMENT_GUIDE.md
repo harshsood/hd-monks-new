@@ -31,14 +31,17 @@ This guide walks you through deploying both the HD Monks frontend and backend to
 
 ### Step 1.1: Create MongoDB Atlas Account
 
-1. Go to [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
-2. Click "Start Free"
-3. Create account
-4. Create free tier cluster
-5. Get connection string:
-   ```
-   mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority
-   ```
+Your MongoDB cluster is already created! 
+
+**Connection Details:**
+- Cluster: `cluster0.b5sxnrw.mongodb.net`
+- Username: `sr4ipr`
+- Get your password from MongoDB Atlas dashboard
+
+Connection string:
+```
+mongodb+srv://sr4ipr:<your_password>@cluster0.b5sxnrw.mongodb.net/?appName=Cluster0
+```
 
 ### Step 1.2: Deploy Backend to Render.com
 
@@ -48,14 +51,14 @@ This guide walks you through deploying both the HD Monks frontend and backend to
 4. Select your GitHub repo (`hd-monks-new`)
 5. Configure:
    - **Name**: `hd-monks-api`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `uvicorn server:app --host 0.0.0.0 --port $PORT`
+   - **Build Command**: `cd backend && pip install -r requirements.txt`
+   - **Start Command**: `cd backend && uvicorn server:app --host 0.0.0.0 --port $PORT`
 
 ### Step 1.3: Add Environment Variables (in Render Dashboard)
 
 Add these in Settings → Environment:
 ```
-MONGO_URL=mongodb+srv://your_username:your_password@cluster.mongodb.net/?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://sr4ipr:<your_password>@cluster0.b5sxnrw.mongodb.net/?appName=Cluster0
 DB_NAME=hdmonks
 EMAIL_SENDER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password
@@ -171,7 +174,7 @@ fetch('https://hd-monks-api.onrender.com/api/')
 
 ### Backend (`backend/.env` or Render settings)
 ```env
-MONGO_URL=mongodb+srv://user:pass@cluster.mongodb.net/?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://sr4ipr:<your_password>@cluster0.b5sxnrw.mongodb.net/?appName=Cluster0
 DB_NAME=hdmonks
 EMAIL_SENDER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password

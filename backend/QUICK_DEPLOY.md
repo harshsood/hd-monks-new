@@ -15,12 +15,12 @@ cp .env.example .env
 3. Connect GitHub → Select `hd-monks-new`
 4. Fill in:
    - **Name**: `hd-monks-api`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `uvicorn server:app --host 0.0.0.0 --port $PORT`
+   - **Build Command**: `cd backend && pip install -r requirements.txt`
+   - **Start Command**: `cd backend && uvicorn server:app --host 0.0.0.0 --port $PORT`
 
 ### Step 3: Set Environment Variables (in Render)
 ```
-MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://sr4ipr:<your_password>@cluster0.b5sxnrw.mongodb.net/?appName=Cluster0
 DB_NAME=hdmonks
 EMAIL_SENDER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password
