@@ -1,6 +1,33 @@
-# Getting Started with Create React App
+# HD Monks Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend application for HD Monks, a business consulting platform. Built with React, TailwindCSS, and Shadcn UI components.
+
+## Prerequisites
+
+- Node.js 16+ and npm/yarn
+- Backend API running (for API calls)
+
+## Setup Instructions
+
+### 1. Install Dependencies
+
+```bash
+npm install --legacy-peer-deps
+```
+
+### 2. Environment Variables
+
+Create a `.env.local` file in the frontend directory (see `.env.example`):
+
+```bash
+cp .env.example .env.local
+```
+
+Update `.env.local` with your backend API URL:
+
+```
+REACT_APP_BACKEND_URL=https://your-api-url.com
+```
 
 ## Available Scripts
 
@@ -14,11 +41,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -27,7 +49,80 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment to Vercel
+
+### Prerequisites
+- Vercel account
+- GitHub repository connected to Vercel
+
+### Steps
+
+1. **Push to GitHub**: Ensure your code is pushed to your GitHub repository.
+
+2. **Connect to Vercel**:
+   - Go to [vercel.com](https://vercel.com)
+   - Click "New Project"
+   - Import your GitHub repository
+
+3. **Environment Variables**:
+   - In Vercel project settings, go to "Environment Variables"
+   - Add `REACT_APP_BACKEND_URL` with your backend API URL
+   - Example: `https://api.hdmonks.com`
+
+4. **Build Settings**:
+   - Build Command: `npm install --legacy-peer-deps && npm run build`
+   - Output Directory: `build`
+   - Install Command: `npm install --legacy-peer-deps`
+
+5. **Deploy**: Click "Deploy" and Vercel will automatically build and deploy your app.
+
+### Important Notes
+
+- The app uses `REACT_APP_BACKEND_URL` environment variable for API calls. Make sure it's set correctly on Vercel.
+- All API requests are made from the frontend, so ensure your backend CORS settings allow requests from your Vercel domain.
+- The build takes ~2-3 minutes initially.
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable React components
+├── pages/           # Page components (Home, ServiceDetail)
+├── lib/             # Utility functions
+├── hooks/           # Custom React hooks
+├── data/            # Mock data
+├── App.js           # Main App component
+└── index.js         # Entry point
+```
+
+## Tech Stack
+
+- **React 19**: UI library
+- **React Router 7**: Client-side routing
+- **TailwindCSS 3**: CSS framework
+- **Shadcn UI**: Component library
+- **Axios**: HTTP client
+- **React Hook Form**: Form management
+- **Lucide React**: Icons
+- **Zod**: Schema validation
+
+## Common Issues & Solutions
+
+### Build Error: "craco: not found"
+Run `npm install --legacy-peer-deps` to install dependencies including craco.
+
+### Build Error: "MODULE_NOT_FOUND"
+Run `npm install --legacy-peer-deps` again, or `npm cache clean --force` and retry.
+
+### API calls not working
+- Verify `REACT_APP_BACKEND_URL` is set correctly
+- Check backend CORS settings allow your frontend domain
+- Ensure backend is running and accessible
+
+### Vercel Build Fails
+- Check "Deployment" logs in Vercel dashboard
+- Ensure `REACT_APP_BACKEND_URL` environment variable is set
+- Run `npm run build` locally first to verify it works
 
 ### `npm run eject`
 

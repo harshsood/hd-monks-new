@@ -63,24 +63,24 @@ const ServiceDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchService();
-  }, [serviceId]);
-
-  const fetchService = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`${API}/services/${serviceId}`);
-      if (response.data.success) {
-        setService(response.data.data);
+    const fetchService = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`${API}/services/${serviceId}`);
+        if (response.data.success) {
+          setService(response.data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching service:', error);
+        toast.error('Service not found');
+        setTimeout(() => navigate('/'), 2000);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error('Error fetching service:', error);
-      toast.error('Service not found');
-      setTimeout(() => navigate('/'), 2000);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+
+    fetchService();
+  }, [serviceId, navigate]);
 
   if (loading) {
     return (
